@@ -141,8 +141,8 @@ publishing {
 
 @Suppress("UnstableApiUsage")
 gradlePlugin {
-    website.set("https://github.com/Kotlin/binary-compatibility-validator")
-    vcsUrl.set("https://github.com/Kotlin/binary-compatibility-validator")
+    website.set("https://github.com/mikepenz/binary-compatibility-validator")
+    vcsUrl.set("https://github.com/mikepenz/binary-compatibility-validator")
 
     plugins.configureEach {
         tags.addAll("kotlin", "api-management", "binary-compatibility")
@@ -150,11 +150,10 @@ gradlePlugin {
 
     plugins {
         create("binary-compatibility-validator") {
-            id = "org.jetbrains.kotlinx.binary-compatibility-validator"
+            id = "com.mikepenz.kotlinx.binary-compatibility-validator"
             implementationClass = "kotlinx.validation.BinaryCompatibilityValidatorPlugin"
             displayName = "Binary compatibility validator"
-            description =
-                "Produces binary API dumps and compares them in order to verify that binary API is preserved"
+            description = "Produces binary API dumps and compares them in order to verify that binary API is preserved. Forked plugin with regex filter support."
         }
     }
 }
