@@ -11,6 +11,7 @@ The tool allows dumping binary API of a JVM part of a Kotlin library that is pub
 > [!NOTE]  
 > This fork adds additional regex filtering support, simplifying the setup.
 > The aim for this fork is only to exist until the original project adds this feature.
+> See https://github.com/Kotlin/binary-compatibility-validator/pull/121 for more details.
 
 All credits goes to the official project located at: https://github.com/Kotlin/binary-compatibility-validator
 
