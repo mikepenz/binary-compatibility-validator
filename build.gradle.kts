@@ -21,7 +21,7 @@ plugins {
     alias(libs.plugins.dokka)
 }
 
-group = "org.jetbrains.kotlinx"
+group = "com.mikepenz.kotlinx"
 project.findProperty("DeployVersion")?.let {
     version = it
 }

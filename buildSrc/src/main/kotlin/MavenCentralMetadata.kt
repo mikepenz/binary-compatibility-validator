@@ -14,8 +14,8 @@ fun PublishingExtension.mavenCentralMetadata() {
             if (!name.isPresent) {
                 name.set(artifactId)
             }
-            description.set("Kotlin binary public API management tool")
-            url.set("https://github.com/Kotlin/binary-compatibility-validator")
+            description.set("Kotlin binary public API management tool. Fork with regex filter support")
+            url.set("hhttps://github.com/mikepenz/binary-compatibility-validator/")
             licenses {
                 license {
                     name.set("The Apache Software License, Version 2.0")
@@ -30,9 +30,12 @@ fun PublishingExtension.mavenCentralMetadata() {
                     organization.set("JetBrains")
                     organizationUrl.set("https://www.jetbrains.com")
                 }
+                developer {
+                    name.set("Mike Penz")
+                }
             }
             scm {
-                url.set("https://github.com/Kotlin/binary-compatibility-validator")
+                url.set("https://github.com/mikepenz/binary-compatibility-validator/")
             }
         }
     }

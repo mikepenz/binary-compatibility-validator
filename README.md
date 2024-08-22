@@ -1,12 +1,18 @@
 [![Kotlin Alpha](https://kotl.in/badges/alpha.svg)](https://kotlinlang.org/docs/components-stability.html)
 [![JetBrains official project](https://jb.gg/badges/official.svg)](https://confluence.jetbrains.com/display/ALL/JetBrains+on+GitHub)
-[![Maven Central](https://img.shields.io/maven-central/v/org.jetbrains.kotlinx/binary-compatibility-validator)](https://central.sonatype.com/search?q=org.jetbrains.kotlinx.binary-compatibility-validator)
+[![Maven Central](https://img.shields.io/maven-central/v/com.mikepenz.kotlinx/binary-compatibility-validator)](https://central.sonatype.com/search?q=com.mikepenz.kotlinx.binary-compatibility-validator)
 [![License](https://img.shields.io/github/license/Kotlin/binary-compatibility-validator)](LICENSE.TXT)
 [![KDoc link](https://img.shields.io/badge/API_reference-KDoc-blue)](https://kotlin.github.io/binary-compatibility-validator/)
 
 # Binary compatibility validator
 
 The tool allows dumping binary API of a JVM part of a Kotlin library that is public in the sense of Kotlin visibilities and ensures that the public binary API wasn't changed in a way that makes this change binary incompatible.
+
+> [!NOTE]  
+> This fork adds additional regex filtering support, simplifying the setup.
+> The aim for this fork is only to exist until the original project adds this feature.
+
+All credits goes to the official project located at: https://github.com/Kotlin/binary-compatibility-validator
 
 ## Contents
 
@@ -37,7 +43,7 @@ Binary compatibility validator is a Gradle plugin that can be added to your buil
 - in `build.gradle.kts`
 ```kotlin
 plugins {
-    id("org.jetbrains.kotlinx.binary-compatibility-validator") version "0.16.3"
+    id("com.mikepenz.kotlinx.binary-compatibility-validator") version "0.16.3"
 }
 ```
 
@@ -45,7 +51,7 @@ plugins {
 
 ```groovy
 plugins {
-    id 'org.jetbrains.kotlinx.binary-compatibility-validator' version '0.16.3'
+    id 'com.mikepenz.kotlinx.binary-compatibility-validator' version '0.16.3'
 }
 ```
 
@@ -88,6 +94,11 @@ apiValidation {
     ignoredClasses += ["com.company.BuildConfig"]
 
     /**
+     * Defines a regex pattern used to define classes and packages that are ignored by the API check.
+     */
+    ignored += [".+\\/internal\\/.+"]
+
+    /**
      * Set of annotations that exclude API from being public.
      * Typically, it is all kinds of `@InternalApi` annotations that mark 
      * effectively private API that cannot be actually private for technical reasons.
@@ -125,6 +136,11 @@ apiValidation {
      * contain public API.
      */
     ignoredClasses.add("com.company.BuildConfig")
+
+    /**
+     * Defines a regex pattern used to define classes and packages that are ignored by the API check.
+     */
+    ignored.add(".+\\/internal\\/.+")
     
     /**
      * Set of annotations that exclude API from being public.
